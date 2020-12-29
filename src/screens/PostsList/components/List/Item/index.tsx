@@ -1,15 +1,31 @@
 import React from 'react';
 
+import { IPost, IUser } from '@lib/interfaces';
+
 import styles from './index.module.css';
 
-import { IPost } from '@lib/interfaces';
+interface IProps {
+  post: IPost;
+  user: IUser | null;
+}
 
 const Index = (
-  props: { post: IPost }
+  props: IProps
 ) => {
+  const { post, user } = props;
+
   return (
     <div className={styles.root}>
-      {props.post.title}
+      <div className={styles.userRow}>
+        <span className={styles.userName}>{ user?.name }</span>
+        <span className={styles.userUsername}>@{ user?.username }</span>
+      </div>
+
+      <div className={styles.post}>
+        <span className={styles.postTitle}>{ post.title }</span>
+
+        <div className={styles.postBody}>{ post.body }</div>
+      </div>
     </div>
   );
 };

@@ -11,17 +11,22 @@ import UsersList from '@modules/UsersList';
 
 import PostsList from './screens/PostsList';
 
+import styles from './App.module.css';
+
 const AppRouter = () => {
   const sharedState = React.useContext(SharedContext);
 
   return (
     <Router>
       <UsersList loading={sharedState.users.loading} users={sharedState.users.list} />
-      <Switch>
-        <Route path="/users/:userId/posts" component={PostsList} />
-        <Route path="/users/:userId/todos" component={PostsList} />
-        <Route path="/users/:userId/albums" component={PostsList} />
-      </Switch>
+
+      <div className={styles.pageContent}>
+        <Switch>
+          <Route path="/users/:userId/posts" component={PostsList} />
+          <Route path="/users/:userId/todos" component={PostsList} />
+          <Route path="/users/:userId/albums" component={PostsList} />
+        </Switch>
+      </div>
     </Router>  
   );
 };
