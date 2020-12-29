@@ -109,7 +109,6 @@ const Popover = (props: IPopoverProps = {
 
   const onHide = ():void => {
     setShown(false);
-    console.log('1231')
   };
 
   React.useEffect(() => {
