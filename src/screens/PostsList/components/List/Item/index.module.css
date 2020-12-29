@@ -1,4 +1,28 @@
 .root {
-    max-width: 300px;
-    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    box-shadow: 0 2px 4px 0 rgba(50, 50, 50, 0.35);
+}
+
+.userRow {
+    margin-bottom: 5px;
+}
+
+.userName {
+    font-weight: bolder;
+    margin-right: 5px;
+}
+
+.userUsername {
+    color: #666666;
+    opacity: .9;
+}
+
+.postTitle {
+    font-weight: bolder;
+}
+
+.postBody {
+    line-height: 15px;
 }

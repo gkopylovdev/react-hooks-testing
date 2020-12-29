@@ -2,8 +2,12 @@ import React from 'react';
 
 import styles from './index.module.css';
 
+interface IProps {
+  hasOverlay?: boolean
+}
+
 const Loader = (
-  props: { hasOverlay?: boolean }
+  props: IProps
 ) => {
   if (props.hasOverlay) {
     return (

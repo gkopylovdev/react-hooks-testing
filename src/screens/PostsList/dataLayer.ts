@@ -6,3 +6,9 @@ export async function loadPosts(): Promise<Array<IPost>> {
 
   return data;
 }
+
+export async function loadPostsById(userId: string): Promise<Array<IPost>> {
+  const data = await request('GET', `/users/${userId}/posts`);
+
+  return data;
+}
