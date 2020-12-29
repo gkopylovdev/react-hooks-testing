@@ -36,6 +36,19 @@ hr {
     color: #666666;
 }
 
+.actionsPopup {
+    text-align: center;
+    width: 100px;
+}
+
+.actionsPopupItem {
+    cursor: pointer;
+}
+
+.actionsPopupItem:hover {
+    background: rgba(0, 0, 0, .1);
+}
+
 .action {
     cursor: pointer;
     transition: color 100ms;
