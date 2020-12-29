@@ -18,9 +18,9 @@ const AppRouter = () => {
     <Router>
       <UsersList loading={sharedState.users.loading} users={sharedState.users.list} />
       <Switch>
-        <Route exact path="/">
-          <PostsList />
-        </Route>
+        <Route path="/users/:userId/posts" component={PostsList} />
+        <Route path="/users/:userId/todos" component={PostsList} />
+        <Route path="/users/:userId/albums" component={PostsList} />
       </Switch>
     </Router>  
   );

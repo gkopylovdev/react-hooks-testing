@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
@@ -34,7 +35,11 @@ const User = (
           position="right"
           triggerNode={<div className={styles.action}><FontAwesomeIcon icon={faEllipsisH} /></div>}
         >
-          <div >123312312</div>
+          <div className={styles.actionsPopup}>
+            <div className={styles.actionsPopupItem}><Link to={`/users/${user.id}/posts`}>User's posts</Link></div>
+            <div className={styles.actionsPopupItem}><Link to={`/users/${user.id}/todos`}>User's todos</Link></div>
+            <div className={styles.actionsPopupItem}><Link to={`/users/${user.id}/albums`}>User's albums</Link></div>
+          </div>
         </Popover>
       </div>
     </div>

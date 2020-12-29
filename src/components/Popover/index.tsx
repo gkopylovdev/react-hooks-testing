@@ -28,9 +28,9 @@ const PopoverContent = (props: IPopoverContentProps = {
   triggerWidth: 0,
   position: 'top'
 }) => {
-  const { triggerHeight, triggerWidth, position, children } = props;
+  const { triggerHeight, triggerWidth, position, children, onClickOutside } = props;
   const [contentSizes, setContentSizes] = React.useState({ height: 0, width: 0 });
-  const contentRef = React.createRef<HTMLDivElement>();
+  const contentRef = React.useRef<HTMLDivElement>(null);
   const classes = [styles.popoverContent, styles[position!]].join(' ');
   const getPositionStyle = React.useMemo(() => {
     const { height, width } = contentSizes;
@@ -59,27 +59,27 @@ const PopoverContent = (props: IPopoverContentProps = {
     }
   }, [position, triggerWidth, triggerHeight, contentSizes]);
 
-  const handleClickOutside = (e: MouseEvent) => {
-    if (contentRef.current && !contentRef.current.contains(e.target as Node)) {
-      props.onClickOutside && props.onClickOutside()
-    }
-  };
-
   React.useLayoutEffect(() => {
     if (contentRef.current) {
       const contentRect = contentRef.current.getBoundingClientRect();
 
       setContentSizes({ height: contentRect.height, width: contentRect.width });
     }
-  }, [children]);
+  }, [children, contentRef]);
 
   React.useEffect(() => {
-    document.addEventListener('click', handleClickOutside, false);
+    const handleClickOutside = (e: MouseEvent) => {
+      if (contentRef.current && !contentRef.current.contains(e.target as Node)) {
+        onClickOutside && onClickOutside()
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside, true);
 
     return () => {
-      document.removeEventListener('click', handleClickOutside, false);
+      document.removeEventListener('click', handleClickOutside, true);
     };
-  }, [contentRef]);
+  }, [contentRef, onClickOutside]);
 
   return (
     <div className={classes} style={getPositionStyle} ref={contentRef}>
@@ -95,9 +95,11 @@ const Popover = (props: IPopoverProps = {
   const { triggerNode, trigger, position, children } = props;
   const [shown, setShown] = React.useState(false);
   const [triggerSizes, setTriggerSizes] = React.useState({ height: 0, width: 0 });
-  const triggerRef = React.createRef<HTMLDivElement>();
+  const triggerRef = React.useRef<HTMLDivElement>(null);
 
-  const onToggle = ():void => {
+  const onToggle = (e: MouseEvent):void => {
+    e.stopPropagation();
+
     setShown(!shown);
   };
 
@@ -107,6 +109,7 @@ const Popover = (props: IPopoverProps = {
 
   const onHide = ():void => {
     setShown(false);
+    console.log('1231')
   };
 
   React.useEffect(() => {
