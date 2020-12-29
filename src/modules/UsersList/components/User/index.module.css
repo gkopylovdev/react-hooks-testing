@@ -1,0 +1,46 @@
+.root {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px 5px 5px;
+}
+
+hr {
+    margin: 10px 0;
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+}
+
+.externalLink {
+    margin-left: 5px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.email {
+    color: #666;
+    font-size: 14px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    color: #666666;
+}
+
+.action {
+    cursor: pointer;
+    transition: color 100ms;
+}
+
+.action:hover {
+    color: #000;
+}

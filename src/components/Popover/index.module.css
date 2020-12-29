@@ -1,0 +1,64 @@
+.popover {
+    position: relative;
+}
+
+.transitionHolder {
+    opacity: 0;
+    transition: opacity 100ms linear;
+}
+
+.transitionHolder.entering {
+    opacity: 1;
+}
+
+.transitionHolder.entered {
+    opacity: 1;
+}
+
+.transitionHolder.exiting {
+    opacity: 0;
+}
+
+.transitionHolder.exited {
+    opacity: 0;
+}
+
+.popoverContent {
+    position: absolute;
+    padding: 3px;
+    background: #fff;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+    border: 1px solid rgba(0,0,0,.15);
+    z-index: 1000;
+    user-select: none;
+}
+
+.popoverContent:after {
+    content: '';
+    position: absolute;
+    border: 6px solid transparent;
+}
+
+.popoverContent.top:after {
+    border-top-color: #fff;
+    bottom: -12px;
+    left: calc(50% - 6px);
+}
+
+.popoverContent.right:after {
+    border-right-color: #fff;
+    left: -12px;
+    top: calc(50% - 6px);
+}
+
+.popoverContent.bottom:after {
+    border-bottom-color: #fff;
+    left: calc(50% - 6px);
+    top: -12px;
+}
+
+.popoverContent.left:after {
+    border-left-color: #fff;
+    right: -12px;
+    top: calc(50% - 6px);
+}

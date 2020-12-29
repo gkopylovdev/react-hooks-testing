@@ -1,0 +1,30 @@
+@keyframes LoaderAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.overlay {
+    background: rgba(160, 160, 160, .3);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    border: 2px dotted #666;
+    border-bottom: none;
+    animation: LoaderAnimation 1800ms infinite linear;
+}
